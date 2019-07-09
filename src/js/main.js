@@ -77,7 +77,7 @@ var draw = (function() {
           return isDrawing;
         },
         setIsRandom: function(bool) {
-          isRandom =bool;
+          isRandom = bool;
         },
 
         getIsRandom: function() {
@@ -157,10 +157,15 @@ var draw = (function() {
       drawLine: function() {
         if (draw.getIsRandom()===true) {
           console.log('get a random color');
+          ctx.strokeStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+        }
+        else {
+          ctx.strokeStyle = color;
         };
         //Start by using random fill colors.
         // ctx.strokeStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
-        ctx.strokeStyle = color;
+        // ctx.strokeStyle = color;
+        console.log(ctx.strokeStyle);
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
@@ -303,6 +308,12 @@ var draw = (function() {
     console.log(color.value);
   }, false);
 
-  window.addEventListener('click', function() {
-    var c = Math.floor(Math.random()*16777215).toString(16);
-  })
+  document.getElementById('btnRandColor').addEventListener('click', function() {
+    if(draw.setIsRandom===true) {
+      draw.setIsRandom(false);
+    }
+    else if(draw.setIsRandom===false) {
+      draw.setIsRandom(true);
+    }; 
+    console.log('listener for random')
+  }, false);
