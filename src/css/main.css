@@ -40,3 +40,13 @@ html {
     width: 90%;
     margin: 0 auto;
   }
+
+  #btnRandColor {
+    display: inline;
+    padding: 0;
+    text-align: right;
+  }
+
+  #color {
+    float: left;
+  }
